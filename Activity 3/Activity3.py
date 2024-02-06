@@ -1,0 +1,35 @@
+import csv
+
+class Person:
+    def __init__(self, id, first_name, middle_name, last_name, birthday, gender, address):
+        self.id = id
+        self.first_name = first_name
+        self.middle_name = middle_name
+        self.last_name = last_name
+        self.birthday = birthday
+        self.gender = gender
+        self.address = address
+    
+def load_csv(file_path):
+    persons = []
+    with open(file_path, 'r') as csv_file:
+        reader = csv.reader(csv_file)
+        # next(reader)
+        for row in reader:
+            id, first_name, middle_name, last_name, birthday, gender, address = row
+            persons.append(Person(id, first_name, middle_name, last_name, birthday, gender, address))
+    return persons
+
+def search(keyword):
+    keyword_upper = keyword.upper()
+    for person in person_list:
+        if(keyword_upper in person.first_name.upper() or
+           keyword_upper in person.middle_name.upper() or
+           keyword_upper in person.last_name.upper()):
+            print(f"ID: {person.id}\nFirst Name: {person.first_name}\nMiddle Name: {person.middle_name}\nLast Name: {person.last_name}\nBirthday: {person.birthday}\nGender: {person.gender}\nAddress: {person.address}\n")
+
+person_list = load_csv("algorit/Activity 3/persons.csv")
+
+while True:
+    user_search = input("Search: ").upper()
+    search(user_search)
