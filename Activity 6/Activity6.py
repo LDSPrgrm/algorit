@@ -41,6 +41,7 @@ def binary_search(list, keyword):
     
 string_list = generate_random_strings(100)
 def main():
+    string_list.sort()
     print(string_list)
     while True:
         keyword = input("Search a keyword (or 'exit' to quit): ")
@@ -51,8 +52,6 @@ def main():
         get_time_complexity(linear_search, string_list, keyword.casefold())
         print()
         print("Sorting started.")
-        string_list.sort()
-        print(string_list)
         print("Sorting finished.\n")
         print("Binary Search Results:")
         get_time_complexity(binary_search, string_list, keyword.casefold())
